@@ -1,9 +1,21 @@
 CurrencyTracker::Application.routes.draw do
+  devise_for :users
+
   root :to => "currencies#index"
+
+#  root :to => "home#index"
   
   resources :countries, :except => [:new, :destroy]
 
   resources :currencies, :only => [:index, :show]
+
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+#    root to: "devise/sessions#new"
+  end
+
+  
+#  devise_for :users, :controllers => { :sessions => "admins/sessions" }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

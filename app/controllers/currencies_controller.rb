@@ -1,10 +1,13 @@
 class CurrenciesController < ApplicationController
   # GET /currencies
   # GET /currencies.xml
+    before_filter :authenticate_user!
   def index
-    @currencies = Currency.all
+#    raise params.inspect
+    @currencies = Currency.search(params[:search])
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.xml  { render :xml => @currencies }
     end

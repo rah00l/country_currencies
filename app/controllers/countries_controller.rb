@@ -1,10 +1,12 @@
 class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.xml
+  before_filter :authenticate_user!
   def index
-    @countries = Country.all
+    @countries = Country.search(params[:search])
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.xml  { render :xml => @countries }
     end

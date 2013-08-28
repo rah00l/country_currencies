@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+
+  <% @currencies.each do |currency| %>
+    <tr>
+      <td><%= currency.name %></td>
+      <td><%= currency.code %></td>
+      <td><%= currency.collected? ? 'Collected' : 'Not Collected' %></td>
+      <td><%= link_to 'Show', currency %></td>
+    </tr>
+  <% end %>
+</table>

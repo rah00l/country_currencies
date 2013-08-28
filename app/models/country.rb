@@ -12,4 +12,13 @@ class Country < ActiveRecord::Base
 
   scope :visited, :conditions => { :visited => true }
   scope :not_visited, :conditions => { :visited => false }
+
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end

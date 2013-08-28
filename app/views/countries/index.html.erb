@@ -13,23 +13,21 @@
 
   <h1>Countries</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-    </tr>
+  <br/>
+<br/>
+<br/>
+<br/>
+  <div  >
+  Search Country by name:
+    <%= form_tag countries_path, id: "countries_search" ,:method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
 
-  <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= country.visited? ? 'Visited' : 'Not Visited' %></td>
-      <td><%= link_to 'Show', country %></td>
-      <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    </tr>
-  <% end %>
-  </table>
+  </div>
+
+<div id="countries_list"><%= render "countries" %></div>
+  
 </section>

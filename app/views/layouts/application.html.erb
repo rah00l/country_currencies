@@ -3,7 +3,7 @@
 <head>
   <title>CurrencyTracker</title>
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application"%>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -12,11 +12,23 @@
   <h1>CurrencyTracker</h1>
   <nav>
     <ul>
+      
+      <% if user_signed_in? %>
       <li><%= link_to "Currencies", currencies_path %></li>
       <li><%= link_to "Countries", countries_path %></li>
+    Signed in as <%= current_user.email %>
+    <%= link_to "Sign out", destroy_user_session_path %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
     </ul>
   </nav>
 </header>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
 
 <%= yield %>
 

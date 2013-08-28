@@ -19,4 +19,17 @@ class Currency < ActiveRecord::Base
   def collected?
     country.nil? ? false : country.visited?
   end
+
+
+
+def self.search(search)
+  if search
+    where('name LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
+end
+
+
+
 end

@@ -12,22 +12,20 @@
   </div>
 
   <h1>Currencies</h1>
+<br/>
+<br/>
+<br/>
+<br/>
+  <div  >
+  Search Currency by name:
+    <%= form_tag currencies_path, id: "currencies_search" ,:method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Status</th>
-      <th></th>
-    </tr>
+  </div>
 
-  <% @currencies.each do |currency| %>
-    <tr>
-      <td><%= currency.name %></td>
-      <td><%= currency.code %></td>
-      <td><%= currency.collected? ? 'Collected' : 'Not Collected' %></td>
-      <td><%= link_to 'Show', currency %></td>
-    </tr>
-  <% end %>
-  </table>
+  <div id="currencies_list"><%= render "currencies" %></div>
 </section>
