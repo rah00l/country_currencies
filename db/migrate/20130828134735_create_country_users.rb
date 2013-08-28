@@ -3,7 +3,7 @@ class CreateCountryUsers < ActiveRecord::Migration
     create_table :country_users do |t|
       t.string :country_code , :null => false
       t.integer :user_id , :null => false
-      t.boolean :status ,:default => :false , :null => :false
+#      t.boolean :status ,:default => :false , :null => :false
     end
     add_index :country_users, [:country_code, :user_id] , :unique => true
   end

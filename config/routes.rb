@@ -14,8 +14,9 @@ CurrencyTracker::Application.routes.draw do
 #    root to: "devise/sessions#new"
   end
 
-  
-#  devise_for :users, :controllers => { :sessions => "admins/sessions" }
+  match 'countries/update_status' => 'countries#update_status' , as: :update_status
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

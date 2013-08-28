@@ -1,19 +1,37 @@
+<div id="countries_updated_list">
 <table>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check all</th>
+    <th></th>
+    <th></th>
+  </tr>
 
-  <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= country.visited? ? 'Visited' : 'Not Visited' %></td>
-      <td><%= link_to 'Show', country %></td>
-      <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    </tr>
-  <% end %>
-  </table>
+  <%= form_for 'Country', :url => {:action => :update_status}, :remote => true, :html => {:id => 'country_form' } do %>
+    <% @countries.each do |country| %>
+      <tr>
+
+        <td><%= country.name %></td>
+        <td><%= country.code %></td>
+    <%# debugger %>
+      <div>
+        <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], current_user.countries.include?(country)%></td>
+        <!--  <td><% country.visited? ? 'Visited' : 'Not Visited' %></td>-->
+        </div>
+        <td><%= link_to 'Show', country %></td>
+        <td><%= link_to 'Edit', edit_country_path(country) %></td>
+      </tr>
+    <% end %>
+    <tr><td></td><td></td><td><%= submit_tag "Save"   %></td><td></td><td></td></tr>
+    </table>
+  <%end%>
+</div>
+
+  <script type="text/javascript">
+    $(function () {
+      $('.checkall').on('click', function () {
+        $(this).closest('div').find(':checkbox').prop('checked', this.checked);
+      });
+    });
+  </script>

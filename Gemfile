@@ -21,3 +21,4 @@ end
 gem 'jquery-rails', '~> 2.2.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'devise'
+gem 'debugger'

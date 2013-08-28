@@ -2,6 +2,7 @@ class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.xml
   before_filter :authenticate_user!
+  after_filter :update_country_visited , only: :update
   def index
     @countries = Country.search(params[:search])
 
@@ -59,4 +60,32 @@ class CountriesController < ApplicationController
       end
     end
   end
+
+
+
+
+  def update_status
+    if params.include?(:country_visited)
+      selected_countries = Country.where(code: params[:country_visited])
+      selected_countries.each do |country|
+        current_user.countries << country unless current_user.countries.include?(country)
+      end
+    else
+      current_user.countries.destroy_all
+#      current_user.countries.delete(@country) if current_user.countries.include?(@country)
+    end
+#   
+  end
+
+  protected
+
+  def update_country_visited
+    if params.include?(:country_visited)
+      current_user.countries << @country unless current_user.countries.include?(@country)
+    else
+      current_user.countries.delete(@country) if current_user.countries.include?(@country)
+    end
+  end
+
+
 end
