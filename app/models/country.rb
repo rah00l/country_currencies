@@ -7,6 +7,9 @@ class Country < ActiveRecord::Base
   validates_uniqueness_of :code, :allow_blank => true
 
   has_many :currencies
+  has_many :country_users , :foreign_key => :country_code
+  has_many :users, through: :country_users
+
 
   accepts_nested_attributes_for :currencies, :allow_destroy => true
 
