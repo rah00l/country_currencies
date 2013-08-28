@@ -1,0 +1,37 @@
+CurrencyTracker
+===============
+
+CurrencyTracker allows you to track your personal collection of world currencies, by tagging the countries that you've visited along your travels.
+
+Added devise gem so need to bundle install,
+--------------------------------------------------
+bundle 
+
+If database is not created
+---------------------------------------------------------
+rake db:create 
+
+
+Run migrations
+----------------------------------------------------------
+rake db:migrate
+
+Run seed for sample data
+----------------------------------------------------------
+rake db:seed
+
+
+Then app
+--------------------------------------------------------- 
+rails s
+
+
+Visit at login screen ,as added authentication system 
+-------------------------------------------------------------
+email + password (more than 8 charachters)
+
+can able to filter on name of currency and country
+---------------------------------------------------------------
+check by adding into search text_field
+
+
