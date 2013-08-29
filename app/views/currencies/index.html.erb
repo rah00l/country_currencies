@@ -1,14 +1,6 @@
 <section>
-  <div id="collected_currencies_chart" class="simple_pie_chart" width='300px' height='100px'>
-    <table>
-      <tr>
-        <th>Collected</th>
-        <td><%= Currency.collected.count %></td>
-      </tr><tr>
-        <th>Not Collected</th>
-        <td><%= Currency.not_collected.count %></td>
-      </tr>
-    </table>
+   <div id="collect_non_collect_chart">
+      <%= render "collected_non_collected_chart"  %>
   </div>
 
   <h1>Currencies</h1>

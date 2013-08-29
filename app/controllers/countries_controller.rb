@@ -74,7 +74,12 @@ class CountriesController < ApplicationController
       current_user.countries.destroy_all
 #      current_user.countries.delete(@country) if current_user.countries.include?(@country)
     end
+    @countries = Country.search(params[:search])
+#    render nothing: true
 #   
+respond_to do |format|
+      format.js
+    end
   end
 
   protected

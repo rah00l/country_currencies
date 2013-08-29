@@ -1,0 +1,20 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.simple_pie_chart').each(function() {
+    //  alert("for chart prepartion");
+    SimplePieChart.initialize(this);
+  });
+})
+</script>
+<div id="visited_countries_chart" class="simple_pie_chart" width='300px' height='100px'>
+<table>
+  <tr>
+    <th>Visited-<%= current_user.countries.count %></th>
+    <!--<td><%#= Country.visited.count %></td>-->
+    <td><%= current_user.countries.count %></td>
+  </tr><tr>
+    <th>Not Visited - <%=  (Country.count - current_user.countries.count) %></th>
+    <td><%= (Country.count - current_user.countries.count) %></td>
+  </tr>
+</table>
+  </div>

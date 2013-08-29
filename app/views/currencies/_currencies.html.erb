@@ -10,7 +10,9 @@
     <tr>
       <td><%= currency.name %></td>
       <td><%= currency.code %></td>
-      <td><%= currency.collected? ? 'Collected' : 'Not Collected' %></td>
+      <!--<td><%#= currency.collected? ? 'Collected' : 'Not Collected' %></td> -->
+      <%# debugger %>
+      <td><%=  (current_user.countries.collect{|a| a.name}.include?(currency.country.name)) ? 'Collected' : 'Not Collected' %></td>
       <td><%= link_to 'Show', currency %></td>
     </tr>
   <% end %>

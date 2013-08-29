@@ -74,7 +74,8 @@ SimplePieChart.initialize = function(root_element) { return new ViewController(r
 })};
 
 $(document).ready(function() {
-  $('.simple_pie_chart').each(function() {
-    SimplePieChart.initialize(this);
-  });
+//  $('.simple_pie_chart').each(function() {
+//      alert("for chart prepartion");
+//    SimplePieChart.initialize(this);
+//  });
 })

@@ -1,37 +1,42 @@
 <div id="countries_updated_list">
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Code</th>
-    <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check all</th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check all</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-  <%= form_for 'Country', :url => {:action => :update_status}, :remote => true, :html => {:id => 'country_form' } do %>
-    <% @countries.each do |country| %>
-      <tr>
-
-        <td><%= country.name %></td>
-        <td><%= country.code %></td>
-    <%# debugger %>
-      <div>
-        <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], current_user.countries.include?(country)%></td>
-        <!--  <td><% country.visited? ? 'Visited' : 'Not Visited' %></td>-->
+    <%#= form_for 'Country', :url => {:action => :update_status}, :remote => true, :html => {:id => 'country_form' } do %>
+    <!--<form accept-charset="UTF-8" action="/countries/update_status" data-remote="true" id="country_form" method="post">
+      <div style="margin:0;padding:0;display:inline">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input name="authenticity_token" type="hidden" value="<%#= form_authenticity_token %>" />
+      </div>-->
+      <% @countries.each do |country| %>
+        <tr>
+          <td><%= country.name %></td>
+          <td><%= country.code %></td>
+        <div>
+          <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], current_user.countries.include?(country)%></td>
+          <!--  <td><% country.visited? ? 'Visited' : 'Not Visited' %></td>-->
         </div>
         <td><%= link_to 'Show', country %></td>
         <td><%= link_to 'Edit', edit_country_path(country) %></td>
-      </tr>
-    <% end %>
-    <tr><td></td><td></td><td><%= submit_tag "Save"   %></td><td></td><td></td></tr>
-    </table>
-  <%end%>
+        </tr>
+      <% end %>
+      <!--<tr><td></td><td></td><td><input name="commit" type="submit" value="nSave" /></td><td></td><td></td></tr>-->
+      <!--<tr><td></td><td></td><td><%#= submit_tag "Save" %></td><td></td><td></td></tr>-->
+    <!--</form>-->
+    <%#end%>
+  </table>
 </div>
 
-  <script type="text/javascript">
-    $(function () {
-      $('.checkall').on('click', function () {
-        $(this).closest('div').find(':checkbox').prop('checked', this.checked);
-      });
+<script type="text/javascript">
+  $(function () {
+    $('.checkall').on('click', function () {
+      $(this).closest('div').find(':checkbox').prop('checked', this.checked);
     });
-  </script>
+  });
+</script>
