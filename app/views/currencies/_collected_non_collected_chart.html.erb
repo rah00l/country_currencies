@@ -1,23 +1,23 @@
 <script type="text/javascript">
   $(document).ready(function() {
-  $('.simple_pie_chart').each(function() {
-    //  alert("for chart prepartion");
-    SimplePieChart.initialize(this);
-  });
-})
+    $('.simple_pie_chart').each(function() {
+      //  alert("for chart prepartion");
+      SimplePieChart.initialize(this);
+    });
+  })
 </script>
 <div id="collected_currencies_chart" class="simple_pie_chart" width='300px' height='100px'>
-    <table>
-      <tr>
-          <%  currencies = current_user.countries.collect {|c| [c.currencies.count]} %>
-          <%  collected_currencies = currencies.flatten.inject{|i,j| i+j }  %>
-        <th>Collected - <%= collected_currencies %></th>
-        <!--<td><%#= Currency.collected.count %></td> -->
-        <td> <%= collected_currencies %></td>
-      </tr><tr>
-        <% not_collected = (Currency.count - collected_currencies) %>
-        <th>Not Collected - <%=  not_collected %> </th>
-        <td><%=  not_collected %></td>
-      </tr>
-    </table>
-  </div>
+  <table>
+    <tr>
+      <%  currencies = current_user.countries.collect {|c| [c.currencies.count]} %>
+      <%  collected_currencies = currencies.flatten.inject{|i,j| i+j }  %>
+      <th>Collected - <%= collected_currencies = collected_currencies.blank? ? 0 : collected_currencies %></th>
+      <!--<td><%#= Currency.collected.count %></td> -->
+      <td> <%= collected_currencies %></td>
+    </tr><tr>
+      <% not_collected = (Currency.count.to_i - collected_currencies.to_i)  %>
+      <th>Not Collected - <%=  not_collected %> </th>
+      <td><%=  not_collected %></td>
+    </tr>
+  </table>
+</div>

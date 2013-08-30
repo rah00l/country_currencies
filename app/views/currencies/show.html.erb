@@ -12,7 +12,7 @@
 
 <p>
   <b>Status:</b>
-  <%= (current_user.countries.collect{|a| a.name}.include?(currency.country.name)) ? 'Collected' : 'Not Collected'  %>
+  <%= (current_user.countries.collect{|a| a.name}.include?(@currency.country.name)) ? 'Collected' : 'Not Collected'  %>
 </p>
 
 <p>

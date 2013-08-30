@@ -66,13 +66,13 @@ class CountriesController < ApplicationController
 
   def update_status
     if params.include?(:country_visited)
-      selected_countries = Country.where(code: params[:country_visited])
-      selected_countries.each do |country|
+      checked_countries = Country.where(code: params[:country_visited])
+      current_user.countries.delete_all
+      checked_countries.each do |country|
         current_user.countries << country unless current_user.countries.include?(country)
       end
     else
       current_user.countries.destroy_all
-#      current_user.countries.delete(@country) if current_user.countries.include?(@country)
     end
     @countries = Country.search(params[:search])
 #    render nothing: true
