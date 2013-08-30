@@ -1,6 +1,6 @@
 <section>
     <div id="visit_non_visit_chart">
-    <%= render "visited_non_visited_chart"  %>
+    <%= render partial: "visited_non_visited_chart",  locals: {user_countries: @user_countries} %>
   </div>
 
   <h1>Countries</h1>
@@ -20,7 +20,7 @@
 
   </div>
 <%= form_for 'Country', :url => {:action => :update_status}, :remote => true, :html => {:id => 'country_form' } do %>
-<div id="countries_list"><%= render "countries" %></div>
+<div id="countries_list"><%= render partial: "countries", locals: {user_countries: @user_countries,countries: @countries  } %></div>
   <%= submit_tag "Save" %>
 <%  end %>
 </section>

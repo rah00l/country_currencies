@@ -3,7 +3,7 @@
     <tr>
       <th>Name</th>
       <th>Code</th>
-      <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check all</th>
+      <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check All</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,13 +14,12 @@
         <input name="utf8" type="hidden" value="&#x2713;" />
         <input name="authenticity_token" type="hidden" value="<%#= form_authenticity_token %>" />
       </div>-->
-      <% @countries.each do |country| %>
+      <% countries.each do |country| %>
         <tr>
           <td><%= country.name %></td>
           <td><%= country.code %></td>
         <div>
-          <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], current_user.countries.include?(country)%></td>
-          <!--  <td><% country.visited? ? 'Visited' : 'Not Visited' %></td>-->
+          <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], user_countries.include?(country.code)%></td>
         </div>
         <td><%= link_to 'Show', country %></td>
         <td><%= link_to 'Edit', edit_country_path(country) %></td>

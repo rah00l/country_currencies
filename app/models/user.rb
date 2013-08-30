@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
 
   has_many :country_users
   has_many :countries, through: :country_users
+
 end

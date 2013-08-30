@@ -8,6 +8,7 @@ gem 'nokogiri'
 group :development do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'rack-mini-profiler'
 end
 
 group :test do

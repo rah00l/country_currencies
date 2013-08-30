@@ -7,14 +7,15 @@
 })
 </script>
 <div id="visited_countries_chart" class="simple_pie_chart" width='300px' height='100px'>
+<% user_countries_count = user_countries.count %>
 <table>
   <tr>
-    <th>Visited-<%= current_user.countries.count %></th>
+    <th>Visited-<%= user_countries_count %></th>
     <!--<td><%#= Country.visited.count %></td>-->
-    <td><%= current_user.countries.count %></td>
+    <td><%= user_countries_count %></td>
   </tr><tr>
-    <th>Not Visited - <%=  (Country.count - current_user.countries.count) %></th>
-    <td><%= (Country.count - current_user.countries.count) %></td>
+    <th>Not Visited - <%=  not_visited(user_countries_count) %></th>
+    <td><%= not_visited(user_countries_count) %></td>
   </tr>
 </table>
   </div>

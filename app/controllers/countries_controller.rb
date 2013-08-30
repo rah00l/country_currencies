@@ -3,9 +3,10 @@ class CountriesController < ApplicationController
   # GET /countries.xml
   before_filter :authenticate_user!
   after_filter :update_country_visited , only: :update
-  def index
-    @countries = Country.search(params[:search])
+  before_filter :counry_data, only: [:index]
 
+  def index
+    
     respond_to do |format|
       format.js
       format.html # index.html.erb
@@ -65,19 +66,47 @@ class CountriesController < ApplicationController
 
 
   def update_status
-    if params.include?(:country_visited)
-      checked_countries = Country.where(code: params[:country_visited])
-      current_user.countries.delete_all
-      checked_countries.each do |country|
-        current_user.countries << country unless current_user.countries.include?(country)
-      end
-    else
-      current_user.countries.destroy_all
-    end
-    @countries = Country.search(params[:search])
-#    render nothing: true
-#   
-respond_to do |format|
+    current_user.countries.clear
+    current_user.countries << Country.where(code:params[:country_visited])
+
+#    selected_countries = Country.where(code: params[:country_visited])
+#    current_user_countries = current_user.countries
+#    Country.all.each do |country|
+#      if current_user_countries .include?(country)
+#        current_user_countries .delete(country) if !selected_countries.include?(country)
+#      else
+#        if selected_countries.include?(country)
+#          current_user_countries  << country
+#        end
+#      end
+#    end
+
+
+
+    #if params.include?(:country_visited)
+#      checked_countries = Country.select(:code).where(code: params[:country_visited])
+#      current_user.countries.clear
+#        current_user_countries = current_user.countries
+#        existing_user_countries = current_user_countries.collect(&:code)
+#        checked_countries = Country.where(code: params[:country_visited]).collect(&:code)
+#        second_one = (existing_user_countries.size  > checked_countries.size)?  checked_countries : existing_user_countries
+#        need_to_create = (existing_user_countries + checked_countries).uniq - second_one
+##debugger
+#        current_user.countries.clear
+#        current_user_countries << Country.where(code: need_to_create)
+#      ##      current_user.countries.delete_all
+#      #      checked_countries.each do |country|
+#      #        current_user.countries << country unless current_user.countries.include?(country)
+#      #      end
+#    #else
+#      #current_user.countries.clear
+#    #$end
+#    #@countries = Country.search(params[:search])
+#    #@user_countries = current_user.countries.collect(&:code)
+    counry_data
+    #    render nothing: true
+    #
+    respond_to do |format|
       format.js
     end
   end
@@ -90,6 +119,11 @@ respond_to do |format|
     else
       current_user.countries.delete(@country) if current_user.countries.include?(@country)
     end
+  end
+
+  def counry_data
+    @countries = Country.search(params[:search])
+    @user_countries = current_user.countries.collect(&:code)
   end
 
 
