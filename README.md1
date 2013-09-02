@@ -26,12 +26,29 @@ Then app
 rails s
 
 
-Visit at login screen ,as added authentication system 
+1- Visit at login screen ,as added authentication system
 -------------------------------------------------------------
-email + password (more than 8 charachters)
+email + password (more than 8 charachters)  -------Done
 
-can able to filter on name of currency and country
+2 - can able to filter on name of currency and country
 ---------------------------------------------------------------
-check by adding into search text_field
+check by adding into search text_field -------Done
+
+3 - A list of countries each with a checkbox next to them. -------Done
+--------------------------------------------------------------
+
+4.Upon using the Visit functionality, only the checked rows and the  chart  are  updated, not the rest of the page. -------Done
+----------------------------------------------------------------------------------------------------------------------------
+
+5. A ‘Check All’ option to use with filtering and got modified all checked entities.  -------Done
+----------------------------------------------------------------------------------------------------------------------------
+
+
+{6. A line  graph is  displayed  over  each  table  showing  number of currencies
+(or countries depending upon  the page) versus time  (the  date).}   -------Done
+----------------------------------------------------------------------------------------------------------------------------
+
+------- Not Done
+
 
 
