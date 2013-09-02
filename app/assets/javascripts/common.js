@@ -8,15 +8,20 @@
 
 $(function () {
 
-$('#country_form').bind('ajax:complete', function(event, data) {
-    alert("Successfully updated");
-//    $('#countries_updated_list').html(data.responseText);
-});
+    $('#countries_search').keyup(function() {
+        $('#countries_search').submit();
+    });
 
-//    $('#country_form').bind('ajax:success', function(data) {
-//        alert("Successfully updated");
-//    });
+    $('#currencies_search').keyup(function() {
+        $('#currencies_search').submit();
+    });
 
+    $('#country_form').bind('ajax:complete', function(event, data) {
+        $('body, html').animate({
+            scrollTop:$('body').offset().top
+            }, 'slow');
+        alert("Successfully updated");
+    });
 
     $("#currencies_search").submit(function (){
         $.get(this.action, $(this).serialize(), null, 'script');
