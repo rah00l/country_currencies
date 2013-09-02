@@ -4,9 +4,9 @@
       <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
 
       <ul>
-      <% @country.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @country.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -19,11 +19,19 @@
     <%= f.label :code %><br />
     <%= f.text_field :code %>
   </div>
+
+  <div class="field">
+    <%= f.label "select date of visit" %><br />
+    <% visit_date = @visit_date.blank? ? nil : @visit_date.visited_at  %>
+    <%= select_date(visit_date , prompt: true,prefix: "visited_at",include_blank: true) %>
+  </div>
   <div class="field">
     <%= f.label :visited %><br />
-    <%#= f.check_box :visited %>
+  <%#= f.check_box :visited %>
     <%= check_box_tag :country_visited, 1,current_user.countries.include?(@country) %>
   </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
