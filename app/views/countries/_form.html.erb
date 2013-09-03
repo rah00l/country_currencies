@@ -20,11 +20,7 @@
     <%= f.text_field :code %>
   </div>
 
-  <div class="field">
-    <%= f.label "select date of visit" %><br />
-    <% visit_date = @visit_date.blank? ? nil : @visit_date.visited_at  %>
-    <%= select_date(visit_date , prompt: true,prefix: "visited_at",include_blank: true) %>
-  </div>
+  
   <div class="field">
     <%= f.label :visited %><br />
   <%#= f.check_box :visited %>

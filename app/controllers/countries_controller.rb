@@ -28,7 +28,7 @@ class CountriesController < ApplicationController
   # GET /countries/1/edit
   def edit
     @country = Country.find(params[:id])
-    @visit_date = (@country.country_users & current_user.country_users).first
+
   end
 
   # POST /countries
@@ -80,11 +80,6 @@ class CountriesController < ApplicationController
   def update_country_visited
     if params.include?(:country_visited)
       current_user.countries << @country unless current_user.countries.include?(@country)
-      @visit_date
-      my_date = Date::civil(params[:visited_at][:year].to_i, params[:visited_at][:month].to_i,params[:visited_at][:day].to_i)
-
-#      visit = (current_user.visits & @country.visits).first
-#      visit.visit_date = params[:visit_date].strip.empty? ? Date.today : params[:visit_date]
     else
       current_user.countries.delete(@country) if current_user.countries.include?(@country)
     end
