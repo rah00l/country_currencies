@@ -3,6 +3,7 @@ class CountriesController < ApplicationController
   # GET /countries.xml
   before_filter :authenticate_user!
   after_filter :update_country_visited , only: :update
+  after_filter :random_visited_at,  only: :update_status
   before_filter :counry_data, only: [:index]
 
   def index
@@ -80,6 +81,15 @@ class CountriesController < ApplicationController
   def update_country_visited
     if params.include?(:country_visited)
       current_user.countries << @country unless current_user.countries.include?(@country)
+  
+      @visit_date = (@country.country_users & current_user.country_users).first
+      if params[:visited_at][:year].present? && params[:visited_at][:month].present? && params[:visited_at][:day].present?
+        my_date = Date::civil(params[:visited_at][:year].to_i, params[:visited_at][:month].to_i,params[:visited_at][:day].to_i)
+        @visit_date.visited_at = my_date
+      else
+        @visit_date.visited_at = Date.today
+      end
+      @visit_date.save!
     else
       current_user.countries.delete(@country) if current_user.countries.include?(@country)
     end
@@ -88,6 +98,13 @@ class CountriesController < ApplicationController
   def counry_data
     @countries = Country.search(params[:search])
     @user_countries = current_user.countries.collect(&:code)
+  end
+
+  def random_visited_at
+    @countries = Country.where(code:params[:country_visited])
+    @countries.each do |country|
+      country.country_users.first.update_attribute("visited_at", Array(Date.new(2013,1,1)..Date.today).sample )
+    end
   end
 
 
