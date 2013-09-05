@@ -4,10 +4,10 @@ class CountriesController < ApplicationController
   before_filter :authenticate_user!
   after_filter :update_country_visited , only: :update
   after_filter :random_visited_at,  only: :update_status
-  before_filter :counry_data, only: [:index]
+  after_filter :counry_data, only: [:index]
 
   def index
-    
+    @countries = Country.search(params[:search])
     respond_to do |format|
       format.js
       format.html # index.html.erb
@@ -96,11 +96,26 @@ class CountriesController < ApplicationController
   end
 
   def counry_data
-    @countries = Country.search(params[:search])
+    
     @user_countries = current_user.countries.collect(&:code)
-
-    current_user.country_users.select("visited_at").collect {|a| a.visited_at.strftime("%Y")}.uniq.sort
-
+    puts "----"*10
+    puts "----"*10
+    debugger
+    
+    unless current_user.country_users.blank?
+      y_years = current_user.country_users.select("visited_at").collect {|a| a.visited_at.strftime("%Y") unless a.nil? }.uniq.sort
+      x_visited = []
+      unless y_years.blank?
+      y_years.each {|d| x_visited << CountryUser.where("strftime('%Y',visited_at)=?",d).count }
+      line_chart = y_years.zip(x_visited)
+      hd = ["Years", "Visited"]
+      @final_line_chart = [hd] + line_chart
+      puts @final_line_chart
+      puts "----"*10
+      puts "----"*10
+    end
+    end
+    
   end
 
   def random_visited_at

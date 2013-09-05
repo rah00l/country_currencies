@@ -1,18 +1,17 @@
-
-
+<% unless  final_line_chart.blank? %>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
           <script type="text/javascript">
-  //alert("sddhjshjsh ");
     google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+        /*var data = google.visualization.arrayToDataTable([
           ['Year', 'Visited'],
           ['2010',  4],
           ['2011',  6],
           ['2012',  11],
           ['2013',  8]
-        ]);
+        ]);*/
+        var data = google.visualization.arrayToDataTable(<%= raw final_line_chart %>);
 
         var options = {
           title: 'No. Of Countries Visited  V/s Years'
@@ -22,3 +21,4 @@
         chart.draw(data, options);
       }
 </script>
+<% end %>
