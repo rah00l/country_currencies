@@ -98,12 +98,15 @@ class CountriesController < ApplicationController
   def counry_data
     @countries = Country.search(params[:search])
     @user_countries = current_user.countries.collect(&:code)
+
+    current_user.country_users.select("visited_at").collect {|a| a.visited_at.strftime("%Y")}.uniq.sort
+
   end
 
   def random_visited_at
     @countries = Country.where(code:params[:country_visited])
     @countries.each do |country|
-      country.country_users.first.update_attribute("visited_at", Array(Date.new(2013,1,1)..Date.today).sample )
+      country.country_users.first.update_attribute("visited_at", Array(Date.new(2010,1,1)..Date.today).sample )
     end
   end
 

@@ -1,0 +1,24 @@
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+          <script type="text/javascript">
+  //alert("sddhjshjsh ");
+    google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Visited'],
+          ['2010',  4],
+          ['2011',  6],
+          ['2012',  11],
+          ['2013',  8]
+        ]);
+
+        var options = {
+          title: 'No. Of Countries Visited  V/s Years'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
+        chart.draw(data, options);
+      }
+</script>
