@@ -2,8 +2,7 @@
   <div id="visit_non_visit_chart">
     <%= render partial: "visited_non_visited_chart",  locals: {user_countries: @user_countries} %>
   </div>
-
-  <div id="line_chart_div" width='300px' height='100px'>
+  <div id="line_chart_div" style="width:400px;height:100px;">
     <%= render partial: "line_chart",  locals: {final_line_chart: @final_line_chart} %>
   </div>
 
@@ -17,7 +16,7 @@
     Search Country by name:
     <%= form_tag countries_path, id: "countries_search" ,:method => 'get' do %>
       <p>
-        <%= text_field_tag :search, params[:search]  , autocomplete: :off%>
+        <%= text_field_tag :search, params[:search]  , autocomplete: :off %>
   <%#= submit_tag "Search", :name => nil %>
       </p>
     <% end %>
@@ -29,6 +28,3 @@
     <%= submit_tag "Save" %>
   <%  end %>
 </section>
-
-
-  

@@ -1,6 +1,6 @@
-<% unless  final_line_chart.blank? %>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
           <script type="text/javascript">
+            alert(<%= raw final_line_chart %>);
     google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -21,4 +21,3 @@
         chart.draw(data, options);
       }
 </script>
-<% end %>

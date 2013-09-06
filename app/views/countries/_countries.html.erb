@@ -7,28 +7,17 @@
       <th></th>
       <th></th>
     </tr>
-
-    <%#= form_for 'Country', :url => {:action => :update_status}, :remote => true, :html => {:id => 'country_form' } do %>
-    <!--<form accept-charset="UTF-8" action="/countries/update_status" data-remote="true" id="country_form" method="post">
-      <div style="margin:0;padding:0;display:inline">
-        <input name="utf8" type="hidden" value="&#x2713;" />
-        <input name="authenticity_token" type="hidden" value="<%#= form_authenticity_token %>" />
-      </div>-->
-      <% countries.each do |country| %>
-        <tr>
-          <td><%= country.name %></td>
-          <td><%= country.code %></td>
-        <div>
-          <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], user_countries.include?(country.code)%></td>
-        </div>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to 'Edit', edit_country_path(country) %></td>
-        </tr>
-      <% end %>
-      <!--<tr><td></td><td></td><td><input name="commit" type="submit" value="nSave" /></td><td></td><td></td></tr>-->
-      <!--<tr><td></td><td></td><td><%#= submit_tag "Save" %></td><td></td><td></td></tr>-->
-    <!--</form>-->
-    <%#end%>
+    <% countries.each do |country| %>
+      <tr>
+        <td><%= country.name %></td>
+        <td><%= country.code %></td>
+      <div>
+        <td class="checkbox"><%= check_box_tag 'country_visited[]', country[:code], user_countries.include?(country.code)%></td>
+      </div>
+      <td><%= link_to 'Show', country %></td>
+      <td><%= link_to 'Edit', edit_country_path(country) %></td>
+      </tr>
+    <% end %>
   </table>
 </div>
 

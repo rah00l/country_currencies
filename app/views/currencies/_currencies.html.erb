@@ -2,17 +2,17 @@
   <tr>
     <th>Name</th>
     <th>Code</th>
-    <th>Status</th>
+    <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check All</th>
     <th></th>
   </tr>
 
-  <% @currencies.each do |currency| %>
+  <% currencies.each do |currency| %>
     <tr>
       <td><%= currency.name %></td>
       <td><%= currency.code %></td>
       <!--<td><%#= currency.collected? ? 'Collected' : 'Not Collected' %></td> -->
-      <%# debugger %>
-      <td><%=  (current_user.countries.collect{|a| a.name}.include?(currency.country.name)) ? 'Collected' : 'Not Collected' %></td>
+      <%  status_value = (user_countries.include?(currency.country.code)) ? true : false %>
+      <td class="checkbox"><%= check_box_tag 'currency_visited[]', currency[:code], status_value %></td>
       <td><%= link_to 'Show', currency %></td>
     </tr>
   <% end %>

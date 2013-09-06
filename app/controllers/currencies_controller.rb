@@ -5,7 +5,7 @@ class CurrenciesController < ApplicationController
   def index
 #    raise params.inspect
     @currencies = Currency.search(params[:search])
-
+    @user_countries = current_user.countries.collect(&:code)
     respond_to do |format|
       format.js
       format.html # index.html.erb

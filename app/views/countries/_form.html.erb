@@ -22,6 +22,13 @@
 
   
   <div class="field">
+  <%= f.label "select date of visit" %><br />
+  <% visit_date = @visit_date.blank? ? nil : @visit_date.visited_at  %>
+  <%# raise visit_date.inspect %>
+  <%= select_date(visit_date,prefix: 'visited_at',include_blank: true) %>
+  <%# select_date(visit_date , prompt: true,include_blank: true) %>
+</div>
+  <div class="field">
     <%= f.label :visited %><br />
   <%#= f.check_box :visited %>
     <%= check_box_tag :country_visited, 1,current_user.countries.include?(@country) %>

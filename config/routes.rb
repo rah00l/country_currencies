@@ -5,7 +5,9 @@ CurrencyTracker::Application.routes.draw do
 
 #  root :to => "home#index"
   
-  resources :countries, :except => [:new, :destroy]
+  resources :countries, :except => [:new, :destroy] do
+#        get 'preview_progress', on: :collection
+  end
 
   resources :currencies, :only => [:index, :show]
 
@@ -15,6 +17,8 @@ CurrencyTracker::Application.routes.draw do
   end
 
   match 'countries/update_status' => 'countries#update_status' , as: :update_status
+
+#  match 'countries/preview_progress' => 'countries#preview_progress' , as: :preview_progress
 
 
 

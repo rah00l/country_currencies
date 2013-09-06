@@ -19,5 +19,5 @@
 
   </div>
 
-  <div id="currencies_list"><%= render "currencies" %></div>
+  <div id="currencies_list"><%= render partial: "currencies" , locals: {user_countries: @user_countries, currencies: @currencies} %></div>
 </section>
