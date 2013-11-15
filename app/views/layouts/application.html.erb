@@ -8,20 +8,35 @@
 </head>
 <body>
 
+
+
+
 <header>
   <h1>CurrencyTracker</h1><br/>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Title</a>
+      <ul class="nav">
+        <li class="active"><a href="#">Home</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Currencies", currencies_path %></li>
+          <li><%= link_to "Countries", countries_path %></li>
+          <li>Signed in as <%= current_user.email %></li>
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
+        <!--<li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>-->
+      </ul>
+    </div>
+  </div>
+
   <nav>
     <ul>
       
-      <% if user_signed_in? %>
-      <li><%= link_to "Currencies", currencies_path %></li>
-      <li><%= link_to "Countries", countries_path %></li>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
+  
     </ul>
   </nav>
 </header>

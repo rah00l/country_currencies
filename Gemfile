@@ -18,10 +18,15 @@ group :test do
 end
 
 group :assets do
+  gem "therubyracer"
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem "twitter-bootstrap-rails"
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails', '~> 2.2.0'
+  #gem 'fancybox-rails'
+#  gem 'therubyracer', :platforms => :ruby
+
 end
 
 
-gem 'jquery-rails', '~> 2.2.0'
-gem 'fancybox-rails'
-gem 'therubyracer', :platforms => :ruby
+
