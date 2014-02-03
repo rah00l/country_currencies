@@ -126,13 +126,7 @@ class CountriesController < ApplicationController
       line_chart = y_years.zip(x_visited)
       hd = ["Years", "Visited"]
       @final_line_chart = [hd] + line_chart
-      puts "~"*12
-      puts "~"*12
-      puts "~"*12
-      puts "~"*12
-      puts @final_line_chart
-      puts "~"*12
-      puts "~"*12
+      
     end
       
 #    debugger

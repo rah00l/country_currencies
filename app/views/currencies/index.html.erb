@@ -1,6 +1,6 @@
 <section>
    <div id="collect_non_collect_chart">
-      <%= render "collected_non_collected_chart"  %>
+      <%= render partial: "collected_non_collected_chart" , locals: {currencies: @currencies, user_countries: @user_countries} %>
   </div>
 
   <h1>Currencies</h1>

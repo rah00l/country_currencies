@@ -17,7 +17,7 @@ group :test do
   gem 'cucumber-rails', :require => false
 end
 
-group :assets do
+#group :assets do
   gem "therubyracer"
   gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem "twitter-bootstrap-rails"
@@ -26,7 +26,7 @@ group :assets do
   #gem 'fancybox-rails'
 #  gem 'therubyracer', :platforms => :ruby
 
-end
+#end
 
 
 

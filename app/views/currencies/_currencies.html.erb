@@ -5,14 +5,13 @@
     <th>Status&nbsp;&nbsp;<input type="checkbox" class="checkall"/> Check All</th>
     <th></th>
   </tr>
-
   <% currencies.each do |currency| %>
     <tr>
       <td><%= currency.name %></td>
       <td><%= currency.code %></td>
-      <!--<td><%#= currency.collected? ? 'Collected' : 'Not Collected' %></td> -->
       <%  status_value = (user_countries.include?(currency.country.code)) ? true : false %>
-      <td class="checkbox"><%= check_box_tag 'currency_visited[]', currency[:code], status_value %></td>
+      <td><%= status_value ? 'Collected' : 'Not Collected' %></td>
+      <!--<td class="checkbox"><%#= check_box_tag 'currency_visited[]', currency[:code], status_value %></td>-->
       <td><%= link_to 'Show', currency %></td>
     </tr>
   <% end %>

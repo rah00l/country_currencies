@@ -1,2 +1,2 @@
-$('#collect_non_collect_chart').html('<%= escape_javascript(render("collected_non_collected_chart")) %>');
-$('#currencies_list').html('<%= escape_javascript(render("currencies")) %>');
+$('#collect_non_collect_chart').html('<%= escape_javascript(render(partial: "collected_non_collected_chart", locals: {user_countries: @user_countries})) %>');
+$('#currencies_list').html('<%= escape_javascript(render(partial: "currencies", locals: {user_countries: @user_countries, currencies: @currencies })) %>');
