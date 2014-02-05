@@ -2,3 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/
+/nbproject/private/private.properties
+/nbproject/private/private.xml
+/nbproject/private/rake-d.txt
+/nbproject/project.properties
+/nbproject/project.xml
