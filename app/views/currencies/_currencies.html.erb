@@ -9,8 +9,8 @@
     <tr>
       <td><%= currency.name %></td>
       <td><%= currency.code %></td>
-      <%  status_value = (user_countries.include?(currency.country.code)) ? true : false %>
-      <td><%= status_value ? 'Collected' : 'Not Collected' %></td>
+      <%#  status_value = (user_countries.include?(currency.country.code)) ? true : false %>
+      <td><%#= status_value ? 'Collected' : 'Not Collected' %></td>
       <!--<td class="checkbox"><%#= check_box_tag 'currency_visited[]', currency[:code], status_value %></td>-->
       <td><%= link_to 'Show', currency %></td>
     </tr>
