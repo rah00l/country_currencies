@@ -23,8 +23,9 @@ require 'rails/test_help'
 
 # require "minitest/reporters"
 # Minitest::Reporters.use!
-
-
+require 'test/unit'
+# require 'mocha/setup'
+require "mocha"
 
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`

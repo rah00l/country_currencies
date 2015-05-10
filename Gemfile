@@ -15,9 +15,7 @@ group :development do
 end
 
 group :tool do
-  gem 'guard'
-  # Allows to automatically & intelligently launch tests when files are modified or created.
-  gem 'guard-test'
+  
 end
 
 group :test do
@@ -36,8 +34,20 @@ group :test do
   # TURN is a new way to view test results
   # gem "turn"
 
+
   # For getting more descriptive BDD style test names
   gem 'shoulda'
+
+  # For stubbing & mocking 
+  # gem "mocha",:require => false
+  gem "mocha", "~> 0.12.8", :require => false
+
+
+  gem 'guard'
+  # Allows to automatically & intelligently launch tests when files are modified or created.
+  # gem 'guard-test'
+  gem 'guard-test'
+
 
   # gem 'minitest'
   # gem 'minitest-spec-rails', '~> 4.7'
