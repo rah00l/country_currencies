@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(:version => 20130828134735) do
     t.datetime "visited_at"
   end
 
-  add_index "country_users", ["country_code", "user_id"], :name => "index_country_users_on_country_code_and_user_id", :unique => true
-
   create_table "currencies", :id => false, :force => true do |t|
     t.string   "name"
     t.string   "code"
@@ -52,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130828134735) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  # add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  # add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -5,7 +5,7 @@ class CreateCountryUsers < ActiveRecord::Migration
       t.integer :user_id , :null => false
       t.datetime :visited_at 
     end
-    add_index :country_users, [:country_code, :user_id] , :unique => true
+    # add_index :country_users, [:country_code, :user_id] , :unique => true
   end
 
   def self.down
