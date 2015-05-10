@@ -11,7 +11,7 @@ CurrencyTracker::Application.routes.draw do
 
   resources :currencies, :only => [:index, :show]
 
-  devise_for :users do
+  devise_scope :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
 #    root to: "devise/sessions#new"
   end
