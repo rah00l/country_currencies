@@ -1,7 +1,12 @@
 FactoryGirl.define do
   factory :country do
-    name "Marko"
+    name "India"
     code  "IND"
+  end
+
+  factory :currency do
+    name "Rupee"
+    code  "rs"
   end
 
   factory :user do
