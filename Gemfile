@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2'
 gem 'sqlite3'
+gem 'mysql2'
 gem 'savon'
 gem 'nokogiri'
 
@@ -11,6 +12,12 @@ group :development do
   # gem 'rack-mini-profiler'
   gem 'devise'
   gem 'debugger'
+end
+
+group :tool do
+  gem 'guard'
+  # Allows to automatically & intelligently launch tests when files are modified or created.
+  gem 'guard-test'
 end
 
 group :test do
