@@ -1,4 +1,8 @@
 class Currency < ActiveRecord::Base
+
+  # t.string :name
+  # t.string :code
+
   self.primary_key = :code
   attr_accessible :name, :code, :country_id
 
