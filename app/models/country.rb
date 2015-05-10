@@ -1,4 +1,10 @@
 class Country < ActiveRecord::Base
+
+  # t.string :name
+  # t.string :code
+  # t.timestamps
+  # t.primary_key :code
+
   self.primary_key = :code
   attr_accessible :name, :code, :visited
 
