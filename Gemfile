@@ -14,7 +14,28 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  # gem 'cucumber-rails', :require => false
+  
+  # Code coverage for Ruby 1.9+ with a powerful configuration library and automatic merging of coverage across test suites
+  gem 'simplecov', :require => false
+
+  # JSON formatter for the ruby 1.9+ coverage gem SimpleCov 
+  gem 'simplecov-json', :require => false
+
+  # factory_girl is a fixtures replacement with a straightforward definition syntax
+  # & factory_girl_rails provides Rails integration for factory_girl
+  gem "factory_girl_rails", "~> 4.0"
+
+  # TURN is a new way to view test results
+  # gem "turn"
+
+  # For getting more descriptive BDD style test names
+  gem 'shoulda'
+
+  # gem 'minitest'
+  # gem 'minitest-spec-rails', '~> 4.7'
+  # gem 'minitest-reporters'
+  # gem 'mocha', :require => false
 end
 
 #group :assets do
