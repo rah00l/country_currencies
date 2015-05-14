@@ -9,9 +9,13 @@ class DataUpdater
   end
 
   def initialize
-    @client = Savon::Client.new do
-      wsdl.document = "http://www.webservicex.net/country.asmx?WSDL"
-    end
+    # @client = Savon::Client.new do
+    #   wsdl.document = "http://www.webservicex.net/country.asmx?WSDL"
+    # end
+    ## FIXED ISSUE for above code getting following error
+    ## ArgumentError: wrong number of arguments (0 for 1)
+    ## So changed with following line of code
+    @client = Savon::Client.new(wsdl: "http://www.webservicex.net/country.asmx?WSDL")
   end
 
   def update
