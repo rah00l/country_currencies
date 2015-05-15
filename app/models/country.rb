@@ -1,9 +1,10 @@
 class Country < ActiveRecord::Base
 
-  # t.string :name
-  # t.string :code
-  # t.timestamps
-  # t.primary_key :code
+  ### Scema Information ###
+  # name     string
+  # code     primary_key
+  # visited  boolean
+  ### Scema Information ###
 
   self.primary_key = :code
   attr_accessible :name, :code, :visited

@@ -1,7 +1,9 @@
 class Currency < ActiveRecord::Base
 
-  # t.string :name
-  # t.string :code
+  ### Scema Information ###
+  # name => string
+  # code => string
+  ### Scema Information ###
 
   self.primary_key = :code
   attr_accessible :name, :code, :country_id
@@ -12,6 +14,7 @@ class Currency < ActiveRecord::Base
 
   belongs_to :country
 
+  ## Class methods ######
   def self.collected
     all.select {|currency| currency.collected? }
   end
@@ -20,15 +23,15 @@ class Currency < ActiveRecord::Base
     all.reject {|currency| currency.collected? }
   end
 
-  def collected?
-    country.nil? ? false : country.visited?
-  end
-
   def self.search(search)
     if search
       where('name LIKE ?', "%#{search}%")
     else
       scoped
     end
+  end
+  ## Instance method ######
+  def collected?
+    country.nil? ? false : country.visited?
   end
 end
