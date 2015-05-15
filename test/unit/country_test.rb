@@ -9,7 +9,7 @@ class CountryTest < ActiveSupport::TestCase
   	end
 
   	should "get records by search" do
-  		@country.stubs(:name).retuns("India")
+  		@country.stubs(:name).returns("India")
   		assert Country.search("ind")
   		assert_equal "India",@country.name
   	end
