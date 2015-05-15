@@ -51,10 +51,10 @@ class CountriesController < ApplicationController
   # PUT /countries/1
   # PUT /countries/1.xml
   def update
-    @country = Country.find(params[:id])
+    @country = Country.find_by_code(params[:id])
 
     respond_to do |format|
-      if @country.update_attributes(params[:country])
+      if @country && @country.update_attributes(params[:country])
         format.html { redirect_to(@country, :notice => 'Country was successfully updated.') }
         format.xml  { head :ok }
       else
