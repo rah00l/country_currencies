@@ -1,41 +1,44 @@
+<% unless @country.blank? %>
 <%= form_for(@country) do |f| %>
-  <% if @country.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
+<% if @country.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
 
-      <ul>
-        <% @country.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @country.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
 
-  
-  <div class="field">
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :code %><br />
+  <%= f.text_field :code %>
+</div>
+
+
+<div class="field">
   <%= f.label "select date of visit" %><br />
   <% visit_date = @visit_date.blank? ? nil : @visit_date.visited_at  %>
   <%# raise visit_date.inspect %>
   <%= select_date(visit_date,prefix: 'visited_at',include_blank: true) %>
   <%# select_date(visit_date , prompt: true,include_blank: true) %>
 </div>
-  <div class="field">
-    <%= f.label :visited %><br />
+<div class="field">
+  <%= f.label :visited %><br />
   <%#= f.check_box :visited %>
-    <%= check_box_tag :country_visited, 1,current_user.countries.include?(@country) %>
-  </div>
+  <%= check_box_tag :country_visited, 1,current_user.countries.include?(@country) %>
+</div>
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
+<% end %> 
