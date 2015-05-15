@@ -21,7 +21,7 @@ class CountriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:countries)
   end
 
-  should "should create country" do
+  should "create country" do
     assert_difference('Country.count') do
       post :create, :country => @country.attributes.merge({ :code => Time.now.to_s })
     end
@@ -50,5 +50,10 @@ class CountriesControllerTest < ActionController::TestCase
   should "able to update country" do
     put :update, :id => @country.to_param, :country => @country.attributes
     assert_redirected_to country_path(assigns(:country))
+  end
+
+  should "Not able to update country as id not provided" do
+    put :update, :id => "", :country => @country.attributes
+    assert_template :edit 
   end
 end
