@@ -34,13 +34,15 @@ group :test do
   # TURN is a new way to view test results
   # gem "turn"
 
+  gem "rack", "1.4.1"
 
   # For getting more descriptive BDD style test names
   gem 'shoulda'
 
+  gem 'test-unit', '2.5.4'  
   # For stubbing & mocking 
   # gem "mocha",:require => false
-  gem "mocha", "~> 0.12.8", :require => false
+  gem "mocha", "~> 0.12.9", :require => false
 
 
   gem 'guard'
