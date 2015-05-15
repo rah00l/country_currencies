@@ -47,13 +47,20 @@ class CountriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  should "able to update country" do
-    put :update, :id => @country.to_param, :country => @country.attributes
-    assert_redirected_to country_path(assigns(:country))
+  context "#update" do
+    should "able to update country" do
+      put :update, :id => @country.to_param, :country => @country.attributes
+      assert_redirected_to country_path(assigns(:country))
+    end
+
+    should "Not able to update country as id not provided" do
+      put :update, :id => "", :country => @country.attributes
+      assert_template :edit
+    end
   end
 
-  should "Not able to update country as id not provided" do
-    put :update, :id => "", :country => @country.attributes
-    assert_template :edit 
+  should "getting status update" do
+    put :update_status, formate: :js
+    assert_response 406
   end
 end
