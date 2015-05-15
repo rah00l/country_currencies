@@ -1,12 +1,14 @@
 FactoryGirl.define do
   factory :country do
     name "India"
-    code  "IND"
+    # code  "IND"
+    sequence(:code){|n| "country-#{n}" }
   end
 
   factory :currency do
     name "Rupee"
-    code  "rs"
+    sequence(:code){|n| "currency-#{n}" }
+    # code  "rs"
   end
 
   factory :user do
