@@ -10,23 +10,14 @@ SimpleCov.start 'rails' do
                           SimpleCov::Formatter::JSONFormatter ]
 end if ENV["COVERAGE"]
 
-
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-# require 'minitest/unit'
-# require "minitest/rails"
-# require 'minitest/autorun'
-# require "minitest"
-# require 'minitest-spec-rails'
-# require "minitest/autorun"
 
-# require "minitest/reporters"
-# Minitest::Reporters.use!
-require 'test/unit'
-# require 'mocha/setup'
-require "mocha"
+require 'action_view/test_case'
+# Minitest-Spec-Rails should not be required until after ActionView::TestCase
+require 'minitest-spec-rails'
 
+require 'test_help'
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
