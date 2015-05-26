@@ -51,8 +51,8 @@ group :test do
   # gem 'guard-test'
 
 
-  # gem 'minitest'
-  gem 'minitest-spec-rails', '~> 4.7',require: false
+  gem 'minitest'
+  gem 'minitest-spec-rails', '~> 4.7'#,require: false
   # gem 'minitest-reporters'
   # gem 'mocha', :require => false
 end

@@ -185,6 +185,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   jquery-rails (~> 2.2.0)
   less-rails
+  minitest
   minitest-spec-rails (~> 4.7)
   mysql2
   nokogiri
