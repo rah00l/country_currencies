@@ -32,4 +32,6 @@ CurrencyTracker::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.minitest_spec_rails.mini_shoulda = true
 end
