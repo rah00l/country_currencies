@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2'
+gem 'rails', '3.2.21'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'savon'
@@ -12,6 +12,9 @@ group :development do
   # gem 'rack-mini-profiler'
   gem 'devise'
   gem 'debugger'
+
+  gem 'guard' # NOTE: this is necessary in newer versions
+  gem 'guard-minitest'
 end
 
 group :tool do
@@ -34,7 +37,7 @@ group :test do
   # TURN is a new way to view test results
   # gem "turn"
 
-  gem "rack", "1.4.1"
+  # gem "rack", "1.4.1"
 
   # For getting more descriptive BDD style test names
   # gem 'shoulda'
@@ -53,8 +56,8 @@ group :test do
 
   gem 'minitest'
   gem 'minitest-spec-rails', '~> 4.7'#,require: false
-  # gem 'minitest-reporters'
-  # gem 'mocha', :require => false
+  gem "minitest-colorize" # makes dots red/green and outputs failure info inline
+  gem "minitest-focus"
 end
 
 #group :assets do
