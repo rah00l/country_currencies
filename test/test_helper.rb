@@ -24,7 +24,7 @@ require 'rails/test_help'
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-require "minitest/pride"
+# require "minitest/pride"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -54,11 +54,11 @@ class ActiveSupport::TestCase
     end
   end
 
-  def testing_class
-    begin
-      self.class.to_s[0..-5].constantize
-    rescue NameError
-      nil
-    end
-  end
+  # def testing_class
+  #   begin
+  #     self.class.to_s[0..-5].constantize
+  #   rescue NameError
+  #     nil
+  #   end
+  # end
 end
