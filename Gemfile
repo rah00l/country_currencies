@@ -12,13 +12,9 @@ group :development do
   # gem 'rack-mini-profiler'
   gem 'devise'
   gem 'debugger'
-
-  gem 'guard' # NOTE: this is necessary in newer versions
-  gem 'guard-minitest'
 end
 
 group :test do
-
   # Code coverage for Ruby 1.9+ with a powerful configuration library and automatic merging of coverage across test suites
   gem 'simplecov', :require => false
 
@@ -40,12 +36,19 @@ group :test do
   # gem 'guard'
   # Allows to automatically & intelligently launch tests when files are modified or created.
   # gem 'guard-test'
-  # gem 'guard-test'
 
   gem 'minitest'
   gem 'minitest-spec-rails', '~> 4.7'#,require: false
   gem "minitest-colorize" # makes dots red/green and outputs failure info inline
   gem "minitest-focus"
+
+  # To run test-case once file got save
+  gem 'guard' # NOTE: this is necessary in newer versions
+  gem 'guard-minitest'
+
+  # In order to get terminal notification added following gems
+  gem "terminal-notifier-guard"
+  gem 'libnotify' # This is for linux os getting notifications
 end
 
   gem "therubyracer", "~> 0.10.2"
