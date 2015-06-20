@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.21'
+gem 'rails', '3.2.22'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'savon'
 gem 'nokogiri'
+gem 'rack', '1.4.6'
 
 group :development do
   gem 'capybara'
@@ -55,4 +56,4 @@ end
   gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem "twitter-bootstrap-rails"
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-rails', '~> 2.2.0'
+  gem 'jquery-rails', '3.1.3'
